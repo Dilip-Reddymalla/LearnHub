@@ -125,9 +125,3 @@ Validates that:
 | **Contact** | Name min 2 chars, email regex, message min 10 chars              |
 
 ---
-
-## 👤 Author
-
-**Dilip Reddy Malla**
-B.E/B.Tech CSE4, IV Semester
-CBIT (Autonomous), Hyderabad-75
