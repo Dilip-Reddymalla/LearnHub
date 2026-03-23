@@ -1,7 +1,5 @@
 # LearnHub — Online Learning Platform
 
-A static website built for the **Web Programming (WP)** Assignment-I, IV-Semester CSE4, CBIT Hyderabad.
-
 ## 🔗 Live Demo
 
 Hosted via GitHub Pages: _https://dilip-reddymalla.github.io/LearnHub/_
