@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LearnHub — Build skills with expert-led online courses, certifications, and degrees. Start learning today.">
+    <title>LearnHub — Learn Without Limits</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav>
+            <a href="home.html" class="logo">Learn<span>Hub</span></a>
+            <ul>
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <!-- Floating animated shapes -->
+        <div class="hero-particles">
+            <div class="particle particle-1"></div>
+            <div class="particle particle-2"></div>
+            <div class="particle particle-3"></div>
+            <div class="particle particle-4"></div>
+            <div class="particle particle-5"></div>
+            <div class="particle particle-6"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">🚀 #1 Online Learning Platform</span>
+                <h1>Learn Without <span class="gradient-text">Limits</span></h1>
+                <p class="hero-subtitle">Build skills with courses, certificates, and degrees online from world-class
+                    universities and companies.</p>
+                <div class="hero-cta">
+                    <button class="btn-primary" onclick="location.href='courses.html'">
+                        Explore Courses
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <button class="btn-secondary" onclick="location.href='signup.html'">
+                        Join for Free
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">100<span class="stat-plus">+</span></span>
+                        <span class="stat-label">Courses</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">50<span class="stat-plus">+</span></span>
+                        <span class="stat-label">Instructors</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">10,000<span class="stat-plus">+</span></span>
+                        <span class="stat-label">Students</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+        <h2>Why Choose <span class="gradient-text">LearnHub</span></h2>
+        <p class="section-subtitle">Everything you need to accelerate your learning journey</p>
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>100+ Courses</h3>
+                <p>Wide range of topics to explore and master, from beginner to advanced</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👨‍🏫</div>
+                <h3>Expert Instructors</h3>
+                <p>Learn from industry professionals with real-world experience</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Learn Anywhere</h3>
+                <p>Access courses anytime, anywhere on any device</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Certification</h3>
+                <p>Get industry-recognized certificates to boost your career</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- COURSES PREVIEW -->
+    <section class="courses-preview">
+        <h2>Popular <span class="gradient-text">Courses</span></h2>
+        <p class="section-subtitle">Handpicked by our learners worldwide</p>
+
+        <div class="course-grid">
+
+            <div class="card">
+                <div class="card-badge">Bestseller</div>
+                <h3>Web Development</h3>
+                <p class="card-instructor">Instructor: John Doe</p>
+                <p class="card-rating">⭐ 4.5</p>
+                <p class="card-price">₹1999</p>
+            </div>
+
+            <div class="card">
+                <div class="card-badge hot">Hot</div>
+                <h3>Python Programming</h3>
+                <p class="card-instructor">Instructor: Jane Smith</p>
+                <p class="card-rating">⭐ 4.7</p>
+                <p class="card-price">₹1499</p>
+            </div>
+
+            <div class="card">
+                <div class="card-badge new">New</div>
+                <h3>Data Science</h3>
+                <p class="card-instructor">Instructor: Alex</p>
+                <p class="card-rating">⭐ 4.8</p>
+                <p class="card-price">₹2499</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Start Learning Today</h2>
+        <p>Join thousands of learners worldwide and transform your career</p>
+        <button class="btn-primary cta-btn" onclick="location.href='signup.html'">Join Now — It's Free</button>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 LearnHub | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.hero-text, .feature-card, .card, .cta, .hero-stats').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+
+</html>

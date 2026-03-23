@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<courses xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="courses.xsd">
+
+    <course id="1">
+        <title>Web Development</title>
+        <instructor>John Doe</instructor>
+        <price>1999</price>
+        <rating>4.5</rating>
+        <duration>6 weeks</duration>
+        <description>Learn HTML, CSS, JavaScript from scratch. Build responsive websites and modern web applications.</description>
+    </course>
+
+    <course id="2">
+        <title>Python Programming</title>
+        <instructor>Jane Smith</instructor>
+        <price>1499</price>
+        <rating>4.7</rating>
+        <duration>5 weeks</duration>
+        <description>Master Python for real-world applications including automation, scripting, and data processing.</description>
+    </course>
+
+    <course id="3">
+        <title>Data Science</title>
+        <instructor>Alex Kumar</instructor>
+        <price>2499</price>
+        <rating>4.8</rating>
+        <duration>8 weeks</duration>
+        <description>Dive into data analysis, visualization, and machine learning using Python, Pandas, and Scikit-learn.</description>
+    </course>
+
+    <course id="4">
+        <title>Java Programming</title>
+        <instructor>Rahul Sharma</instructor>
+        <price>1799</price>
+        <rating>4.4</rating>
+        <duration>6 weeks</duration>
+        <description>Learn Java fundamentals, object-oriented programming, and build enterprise-level applications.</description>
+    </course>
+
+    <course id="5">
+        <title>Cyber Security</title>
+        <instructor>Priya Patel</instructor>
+        <price>2999</price>
+        <rating>4.6</rating>
+        <duration>10 weeks</duration>
+        <description>Master ethical hacking, network security, and vulnerability assessment to protect digital assets.</description>
+    </course>
+
+    <course id="6">
+        <title>Machine Learning</title>
+        <instructor>Dr. Arjun Rao</instructor>
+        <price>3499</price>
+        <rating>4.9</rating>
+        <duration>12 weeks</duration>
+        <description>Learn supervised and unsupervised learning, neural networks, and deploy ML models in production.</description>
+    </course>
+
+</courses>

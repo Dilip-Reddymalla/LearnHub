@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse 100+ online courses at LearnHub. Learn Web Development, Python, Data Science, and more from expert instructors.">
+    <title>Courses — LearnHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="courses.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="home.html" class="logo">Learn<span>Hub</span></a>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Our Courses</h1>
+        <p>Explore our wide range of expert-led courses</p>
+    </div>
+
+    <div class="course-grid" id="courseContainer"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+
+            <h2 id="m-title"></h2>
+            <p id="m-instructor"></p>
+            <p id="m-rating"></p>
+            <p id="m-price"></p>
+            <p id="m-duration"></p>
+            <p id="m-description"></p>
+
+            <button id="enroll">Enroll Now</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 LearnHub | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        let globalXML = null;
+        let isXMLValid = false;
+
+        function validateXML(xml) {
+            let root = xml.getElementsByTagName("courses")[0];
+
+            let children = root.children;
+            for (let i = 0; i < children.length; i++) {
+                if (children[i].tagName !== "course") {
+                    alert("Invalid XML structure!");
+                    return false;
+                }
+            }
+
+            let courses = xml.getElementsByTagName("course");
+
+            for (let i = 0; i < courses.length; i++) {
+                let title = courses[i].getElementsByTagName("title")[0];
+                let instructor = courses[i].getElementsByTagName("instructor")[0];
+                let price = courses[i].getElementsByTagName("price")[0];
+                let rating = courses[i].getElementsByTagName("rating")[0];
+
+                if (!title || !instructor || !price || !rating) {
+                    alert("XML Validation Failed: Missing fields!");
+                    return false;
+                }
+
+                if (!/^\d+$/.test(price.textContent)) {
+                    alert("Price must be a number!");
+                    return false;
+                }
+
+                if (!/^\d+(\.\d+)?$/.test(rating.textContent)) {
+                    alert("Rating must be a number!");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function loadCourses() {
+            fetch("courses.xml")
+                .then(res => res.text())
+                .then(data => {
+                    let parser = new DOMParser();
+                    globalXML = parser.parseFromString(data, "application/xml");
+
+                    if (globalXML.getElementsByTagName("parsererror").length > 0) {
+                        alert("Invalid XML format!");
+                        isXMLValid = false;
+                        document.getElementById("courseContainer").innerHTML =
+                            "<p style='color:red;text-align:center;'>Invalid XML Data</p>";
+                        return;
+                    }
+
+                    if (!validateXML(globalXML)) {
+                        isXMLValid = false;
+                        document.getElementById("courseContainer").innerHTML =
+                            "<p style='color:red;text-align:center;'>Invalid XML Data</p>";
+                        return;
+                    }
+
+                    isXMLValid = true;
+
+                    let courses = globalXML.getElementsByTagName("course");
+                    let output = "";
+
+                    for (let i = 0; i < courses.length; i++) {
+                        let title = courses[i].getElementsByTagName("title")[0].textContent;
+                        let instructor = courses[i].getElementsByTagName("instructor")[0].textContent;
+                        let price = courses[i].getElementsByTagName("price")[0].textContent;
+                        let rating = courses[i].getElementsByTagName("rating")[0].textContent;
+
+                        output += `
+                    <div class="card" onclick="openModal(${i})">
+                        <h3>${title}</h3>
+                        <p>Instructor: ${instructor}</p>
+                        <p>⭐ ${rating}</p>
+                        <p class="price">₹${price}</p>
+                    </div>
+                `;
+                    }
+
+                    document.getElementById("courseContainer").innerHTML = output;
+                })
+                .catch(() => {
+                    alert("Error loading XML");
+                });
+        }
+
+        function openModal(index) {
+            if (!isXMLValid) {
+                alert("Invalid XML data. Cannot open course.");
+                return;
+            }
+
+            let course = globalXML.getElementsByTagName("course")[index];
+
+            document.getElementById("m-title").textContent =
+                course.getElementsByTagName("title")[0].textContent;
+
+            document.getElementById("m-instructor").textContent =
+                "Instructor: " + course.getElementsByTagName("instructor")[0].textContent;
+
+            document.getElementById("m-rating").textContent =
+                "Rating: " + course.getElementsByTagName("rating")[0].textContent;
+
+            document.getElementById("m-price").textContent =
+                "Price: ₹" + course.getElementsByTagName("price")[0].textContent;
+
+            document.getElementById("m-duration").textContent =
+                "Duration: " + course.getElementsByTagName("duration")[0].textContent;
+
+            document.getElementById("m-description").textContent =
+                course.getElementsByTagName("description")[0].textContent;
+
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        window.onclick = function (e) {
+            let modal = document.getElementById("modal");
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("enroll").addEventListener("click", () => {
+                alert("Coming Soon");
+            });
+        });
+
+        window.onload = loadCourses;
+    </script>
+</body>
+
+</html>
