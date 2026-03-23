@@ -4,7 +4,7 @@ A static website built for the **Web Programming (WP)** Assignment-I, IV-Semeste
 
 ## 🔗 Live Demo
 
-Hosted via GitHub Pages: *(add your link here)*
+Hosted via GitHub Pages: _https://dilip-reddymalla.github.io/LearnHub/_
 
 ---
 
@@ -12,7 +12,7 @@ Hosted via GitHub Pages: *(add your link here)*
 
 ```
 wp/
-├── home.html          # Home page with hero section, features, course preview
+├── index.html          # Home page with hero section, features, course preview
 ├── courses.html       # Courses page — loads course data from XML, modal for details
 ├── login.html         # Login page with email + password validation
 ├── signup.html        # Registration page with full form validation
@@ -31,39 +31,43 @@ wp/
 
 ## 🛠️ Technologies Used
 
-| Technology | Purpose |
-|------------|---------|
-| **HTML5** | Page structure and semantic markup |
-| **CSS3** | Styling, layout (CSS Grid), hover effects, animations |
-| **JavaScript** | Form validation, XML parsing, DOM manipulation |
-| **XML** | Storing course data (title, instructor, price, rating, duration, description) |
-| **XSD** | Validating the XML structure and data types |
-| **Google Fonts** | Inter font for modern typography |
-| **GitHub Pages** | Hosting and deployment |
+| Technology       | Purpose                                                                       |
+| ---------------- | ----------------------------------------------------------------------------- |
+| **HTML5**        | Page structure and semantic markup                                            |
+| **CSS3**         | Styling, layout (CSS Grid), hover effects, animations                         |
+| **JavaScript**   | Form validation, XML parsing, DOM manipulation                                |
+| **XML**          | Storing course data (title, instructor, price, rating, duration, description) |
+| **XSD**          | Validating the XML structure and data types                                   |
+| **Google Fonts** | Inter font for modern typography                                              |
+| **GitHub Pages** | Hosting and deployment                                                        |
 
 ---
 
 ## 📄 Pages Overview
 
-### 1. Home (`home.html`)
+### 1. Home (`index.html`)
+
 - Hero section with gradient background, animated floating particles, and stats
 - "Why Choose LearnHub" feature cards using CSS Grid
 - Popular courses preview section
 - Call-to-action section with gradient background
 
 ### 2. Courses (`courses.html`)
+
 - Dynamically loads course data from `courses.xml` using JavaScript `fetch()`
 - Validates XML structure before rendering
 - Clickable course cards open a modal with full details (description, duration, instructor)
 - Enroll button in the modal
 
 ### 3. Login (`login.html`)
+
 - Email validation using regex
 - Password validation (minimum 6 characters)
 - Password visibility toggle
 - Error messages displayed in real-time
 
 ### 4. Sign Up (`signup.html`)
+
 - Full name validation (min 3 letters, alphabets only)
 - Email validation using regex
 - Password strength check (min 6 characters)
@@ -72,6 +76,7 @@ wp/
 - Link to login page
 
 ### 5. Contact (`contact.html`)
+
 - Contact info cards (Address, Email, Phone)
 - Inquiry form with JavaScript validation
   - Name ≥ 2 characters
@@ -96,11 +101,15 @@ wp/
 ## 📦 XML & XSD
 
 ### `courses.xml`
+
 Stores 6 courses with the following fields per course:
+
 - `title`, `instructor`, `price`, `rating`, `duration`, `description`
 
 ### `courses.xsd`
+
 Validates that:
+
 - Each `<course>` has a required `id` attribute (integer)
 - `price` is an integer, `rating` is a decimal
 - `title`, `instructor`, `duration`, `description` are strings
@@ -109,11 +118,11 @@ Validates that:
 
 ## ✅ Form Validation (JavaScript)
 
-| Form | Validations |
-|------|-------------|
-| **Login** | Email regex, password min 6 chars |
+| Form        | Validations                                                      |
+| ----------- | ---------------------------------------------------------------- |
+| **Login**   | Email regex, password min 6 chars                                |
 | **Sign Up** | Name (min 3 letters), email regex, password min 6, confirm match |
-| **Contact** | Name min 2 chars, email regex, message min 10 chars |
+| **Contact** | Name min 2 chars, email regex, message min 10 chars              |
 
 ---
 
